@@ -1,10 +1,16 @@
 package unicodesemigraphics_test
 
 import (
+	"fmt"
+	"io"
 	"testing"
 
 	"github.com/zetamatta/go-unicodesemigraphics"
 )
+
+var _ io.WriterTo = &unicodesemigraphics.Bitmap{}
+
+var _ fmt.Stringer = &unicodesemigraphics.Bitmap{}
 
 func TestNewBitmap(t *testing.T) {
 	bmp := unicodesemigraphics.NewBitmap(3, 3)
