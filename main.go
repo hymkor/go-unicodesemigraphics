@@ -55,10 +55,16 @@ func NewBitmap(width, height int) *Bitmap {
 }
 
 func (bmp *Bitmap) Get(x, y int) bool {
+	if x < 0 || x >= bmp.width || y < 0 || y >= bmp.height {
+		return false
+	}
 	return bmp.lines[y/2][x/2].Get(x%2, y%2)
 }
 
 func (bmp *Bitmap) Set(x, y int, value bool) {
+	if x < 0 || x >= bmp.width || y < 0 || y >= bmp.height {
+		return
+	}
 	bmp.lines[y/2][x/2].Set(x%2, y%2, value)
 }
 
